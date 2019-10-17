@@ -17,7 +17,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "ESP32RMT.h"
+#include "ESP32RMTChannel.h"
 
 #include <new>
 #include "esp_log.h"
@@ -27,7 +27,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // -----------------------------------------------------------------------------
 
-static const char *TAG  = "ESP32RMTCh";
+static const char *TAG  = "ESP32RMT";
 
 /*
  * Standard APB clock (as needed by WiFi and BT to work) is 80 MHz.
@@ -138,11 +138,9 @@ bool ESP32RMTChannel::SetGPIO_Out(uint32_t level)
 
 bool ESP32RMTChannel::ConfigureForWS2812x()
 {
-    if (!initialized)
-        return false;
+    if (!initialized) return false;
 
-	if (!SetGPIO_Out(0))
-        return false;
+	if (!SetGPIO_Out(0)) return false;
 
     rmt_config_t config;
 
@@ -213,8 +211,7 @@ bool ESP32RMTChannel::ConfigureForWS2812x()
 
 bool ESP32RMTChannel::UninstallDriver(void)
 {
-    if (!driverInstalled)
-        return true;
+    if (!driverInstalled) return true;
 
     esp_err_t err = rmt_driver_uninstall(channel);
     if (err != ESP_OK) {
@@ -228,8 +225,7 @@ bool ESP32RMTChannel::UninstallDriver(void)
 
 bool ESP32RMTChannel::SendData(void)
 {
-    if (!initialized)
-        return false;
+    if (!initialized) return false;
 
 	esp_err_t err = rmt_write_items(channel, data, length, true);
     if (err != ESP_OK) {
