@@ -2,8 +2,7 @@
 
 This implementation uses the RMT driver from `ESP-IDF`.
 
-It can be used to control any of the eight channelsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+It can be used to control any of the eight channels of the RMT module.
 
 ## Dependencies
 
@@ -11,7 +10,7 @@ ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
 
 ## Hardware details
 
-The code was tested on the following boards:
+The code ( with [ESP32DLEDController](https://github.com/CalinRadoni/ESP32DLEDController) ) was tested on the following boards:
 
 - ESP32-DevKitC board with a level convertor made from two 74HCT1G04 inverters
 - Dev33-DLED - uses SN74LV1T34 logic level shifter connected to an ESP32-WROOM-32 module
