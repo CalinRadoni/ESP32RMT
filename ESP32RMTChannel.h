@@ -1,6 +1,6 @@
 /**
-This file is part of ESP32RMT esp-idf component from
-pax-devices (https://github.com/CalinRadoni/pax-devices)
+This file is part of ESP32RMT esp-idf component
+(https://github.com/CalinRadoni/ESP32RMT)
 Copyright (C) 2019+ by Calin Radoni
 
 This program is free software: you can redistribute it and/or modify
