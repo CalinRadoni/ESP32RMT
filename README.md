@@ -8,6 +8,12 @@ It can be used to control any of the eight channels of the RMT module.
 
 [Espressif IoT Development Framework](https://github.com/espressif/esp-idf).
 
+## Example code
+
+The example application is in the `example` directory and is used for compile checking.
+
+For a better example, see the [ESP32DLEDController](https://github.com/CalinRadoni/ESP32DLEDController) component.
+
 ## Hardware details
 
 The code ( with [ESP32DLEDController](https://github.com/CalinRadoni/ESP32DLEDController) ) was tested on the following boards:
@@ -37,4 +43,4 @@ This software and its documentation are released under the [GNU GPLv3](http://ww
 
 ## Note
 
-This is an improved version of the one used by me previously in the (esp32_digitalLEDs)[https://github.com/CalinRadoni/esp32_digitalLEDs] repository.
+This is an improved version of the one used by me previously in the [esp32_digitalLEDs](https://github.com/CalinRadoni/esp32_digitalLEDs) repository.
