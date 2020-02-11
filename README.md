@@ -1,5 +1,7 @@
 # Helper component for ESP32 Remote Control module
 
+[![Build Status](https://travis-ci.com/CalinRadoni/ESP32RMT.svg?branch=master)](https://travis-ci.com/CalinRadoni/ESP32RMT)
+
 This implementation uses the RMT driver from `ESP-IDF`.
 
 It can be used to control any of the eight channels of the RMT module.
