@@ -162,30 +162,34 @@ bool ESP32RMTChannel::ConfigureForWS2812x()
     config.tx_config.idle_level           = rmt_idle_level_t::RMT_IDLE_LEVEL_LOW;
     config.tx_config.idle_output_en       = true;
 
-    // stop this rmt channel
     esp_err_t err;
 
-	err = rmt_rx_stop(channel);
-    if (err != ESP_OK) {
-    	ESP_LOGE(TAG, "[0x%x] rmt_rx_stop failed", err);
-    	return false;
-    }
-    err = rmt_tx_stop(channel);
-    if (err != ESP_OK) {
-    	ESP_LOGE(TAG, "[0x%x] rmt_tx_stop failed", err);
-    	return false;
-    }
+    if (driverInstalled) {
+        // stop RX and TX on this rmt channel
 
-    // disable rmt interrupts for this channel
-    rmt_set_rx_intr_en(    channel, 0);
-    rmt_set_err_intr_en(   channel, 0);
-    rmt_set_tx_intr_en(    channel, 0);
-    rmt_set_tx_thr_intr_en(channel, 0, 0xffff);
-    // set rmt memory to normal (not power-down) mode
-    err = rmt_set_mem_pd(channel, false);
-    if (err != ESP_OK) {
-    	ESP_LOGE(TAG, "[0x%x] rmt_set_mem_pd failed", err);
-    	return false;
+        err = rmt_rx_stop(channel);
+        if (err != ESP_OK) {
+            ESP_LOGE(TAG, "[0x%x] rmt_rx_stop failed", err);
+            return false;
+        }
+        err = rmt_tx_stop(channel);
+        if (err != ESP_OK) {
+            ESP_LOGE(TAG, "[0x%x] rmt_tx_stop failed", err);
+            return false;
+        }
+
+        // disable rmt interrupts for this channel
+        rmt_set_rx_intr_en(    channel, 0);
+        rmt_set_err_intr_en(   channel, 0);
+        rmt_set_tx_intr_en(    channel, 0);
+        rmt_set_tx_thr_intr_en(channel, 0, 0xffff);
+
+        // set rmt memory to normal (not power-down) mode
+        err = rmt_set_mem_pd(channel, false);
+        if (err != ESP_OK) {
+            ESP_LOGE(TAG, "[0x%x] rmt_set_mem_pd failed", err);
+            return false;
+        }
     }
 
     /* The rmt_config function internally:
@@ -199,13 +203,22 @@ bool ESP32RMTChannel::ConfigureForWS2812x()
     	return false;
     }
 
-    err = rmt_driver_install(channel, 0, 0);
+    if (!InstallDriver()) return false;
+
+    return true;
+}
+
+bool ESP32RMTChannel::InstallDriver(void)
+{
+    if (driverInstalled) return true;
+
+    esp_err_t err = rmt_driver_install(channel, 0, 0);
     if (err != ESP_OK) {
     	ESP_LOGE(TAG, "[0x%x] rmt_driver_install failed", err);
     	return false;
     }
-    driverInstalled = true;
 
+    driverInstalled = true;
     return true;
 }
 
@@ -247,5 +260,5 @@ void ESP32RMTChannel::SetDataBuffer(uint32_t index, rmt_item32_t value)
 {
     if (data != nullptr)
         if (index < length)
-            data [index] = value;
+            data[index] = value;
 }

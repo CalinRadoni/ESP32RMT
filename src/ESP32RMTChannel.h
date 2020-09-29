@@ -106,6 +106,14 @@ protected:
     bool SetGPIO_Out(uint32_t level);
 
     /**
+     * @brief Install RMT driver for specified channel
+     *
+     * Create... functions are installing a RMT driver.
+     * This is the function those should use.
+     */
+    bool InstallDriver(void);
+
+    /**
      * @brief Uninstall RMT driver for specified channel
      *
      * Create... functions are installing a RMT driver.

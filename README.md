@@ -8,7 +8,7 @@ It can be used to control any of the eight channels of the RMT module.
 
 ## Dependencies
 
-[Espressif IoT Development Framework](https://github.com/espressif/esp-idf).
+This component was tested with [ESP-IDF](https://github.com/espressif/esp-idf) **v4.1**.
 
 ## Example code
 
@@ -18,9 +18,10 @@ For a better example, see the [ESP32DLEDController](https://github.com/CalinRado
 
 ## Hardware details
 
-The code ( with [ESP32DLEDController](https://github.com/CalinRadoni/ESP32DLEDController) ) was tested on the following boards:
+The code ( with [ESP32DLEDController](https://github.com/CalinRadoni/ESP32DLEDController) ) was tested on the following boards / devices:
 
 - ESP32-DevKitC board with a level convertor made from two 74HCT1G04 inverters
+- pax-LampD1
 - Dev33-DLED - uses SN74LV1T34 logic level shifter connected to an ESP32-WROOM-32 module
 - Dev34-DLEDGrid - uses SN74LV1T34 logic level shifter connected to an ESP32-WROOM-32 module
 
