@@ -41,4 +41,4 @@ after_success:
 
 branches:
   only:
-  - master
+  - main
