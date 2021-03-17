@@ -1,6 +1,6 @@
 # Helper component for ESP32 Remote Control module
 
-[![Build Status](https://travis-ci.com/CalinRadoni/ESP32RMT.svg?branch=main)](https://travis-ci.com/CalinRadoni/ESP32RMT)
+![Build with ESP-IDF v4.1](https://github.com/CalinRadoni/ESP32RMT/workflows/Build%20with%20ESP-IDF%20v4.1/badge.svg)
 
 This implementation uses the RMT driver from `ESP-IDF`.
 
